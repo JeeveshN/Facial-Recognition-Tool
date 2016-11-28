@@ -4,7 +4,6 @@ import os
 import re
 import numpy as np
 import shelve,random
-from PIL import Image
 if len(sys.argv) < 2:
     print "Usage: python Detect_face.py 'image path'"
     sys.exit()
@@ -34,8 +33,6 @@ def get_images(path):
         regex = re.compile(r'(\d+|\s+)')
         labl = regex.split(img)
         labl = labl[0]
-        print labl
-        print count
         count=count+1
         Make_Changes(labl)
         image_path =os.path.join(path,img)
