@@ -33,3 +33,5 @@ python Face-Recog.py "Image Path or name(if in same folder)"
 ![](/extras/Selection_016.png?raw=True)
 ![](/extras/2.png?raw=True)
 *Note*: Accuracy is low right now because the number of pictures in the training set are less, as the **Dataset** will grow with time predictions would become more and more accurate 
+###Naming Convention For Dataset
+Each and every picture to be used in the training set must start with the name of the **Subject** followed by any **Number** 
