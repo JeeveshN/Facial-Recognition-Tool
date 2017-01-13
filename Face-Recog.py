@@ -8,10 +8,11 @@ if len(sys.argv) < 2:
     print "Usage: python Detect_face.py 'image path'"
     sys.exit()
 
-image_path=sys.argv[1]
-font = cv2.FONT_HERSHEY_SIMPLEX
-cascade="Face_cascade.xml"
-face_cascade=cv2.CascadeClassifier(cascade)
+IMAGE_PATH = sys.argv[1]
+FONT = cv2.FONT_HERSHEY_SIMPLEX
+CASCADE = "Face_cascade.xml"
+FACE_CASCADE = cv2.CascadeClassifier(CASCADE)
+
 Datafile = shelve.open("Data")
 if 'Data' not in Datafile.keys():
     Datafile['Data']=list()
@@ -77,7 +78,7 @@ def recognize(image_path,face_recognizer):
     except:
         print "Image not Found"
         exit()
-    faces = face_cascade.detectMultiScale(image_grey,scaleFactor=1.16,minNeighbors=5,minSize=(25,25),flags=0)
+    faces = FACE_CASCADE.detectMultiScale(image_grey,scaleFactor=1.16,minNeighbors=5,minSize=(25,25),flags=0)
     temp_set = list()
     face_list = list()
     num=0
@@ -88,8 +89,8 @@ def recognize(image_path,face_recognizer):
         nbr,conf = face_recognizer.predict(sub_img)
         face_list.append([nbr,conf]);
         cv2.rectangle(image,(x-5,y-5),(x+w+5,y+h+5),(255, 255,0),2)
-        cv2.putText(image,Data_list[nbr],(x,y-10), font, 0.5,(255,255,0),1)
-        cv2.putText(image,str(num),(x,y+h+20), font, 0.5,(255,255,0),1)
+        cv2.putText(image,Data_list[nbr],(x,y-10), FONT, 0.5,(255,255,0),1)
+        cv2.putText(image,str(num),(x,y+h+20), FONT, 0.5,(255,255,0),1)
         cv2.imwrite("Detected.jpg",image)
         num = int(num)+1
     Datafile["Data"]=Data_list
@@ -101,7 +102,7 @@ def recognize(image_path,face_recognizer):
 
 def main():
     face_r = initialize_recognizer()
-    recognize(image_path,face_r)
+    recognize(IMAGE_PATH,face_r)
 
 
 
