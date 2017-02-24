@@ -27,7 +27,7 @@ Number below face:Correct Name
 ![](/extras/Selection_018.png?raw=True) 
 ###Underlying Algorithm
 The program uses **Linear Binary Pattern Histogram** approach.The basic idea is not to look at the image as a whole but describe local features of object.
-To calculate Local Binary Pattern texture descriptor of a pixel we see all of it's neighbouring 8 pixels and mark a 0 if neighbor is less than center or else a 0 and the binary value calculated by moving around is LBP of center pixel.  
+To calculate Local Binary Pattern texture descriptor of a pixel we see all of it's neighbouring 8 pixels and mark a 0 if neighbor is less than center or else a 1 and the binary value calculated by moving around is LBP of center pixel.  
 For more details refer to [This](http://docs.opencv.org/2.4/modules/contrib/doc/facerec/facerec_tutorial.html#local-binary-patterns-histograms)   
 ![](/extras/lbp.png?raw=True)  
 ##Demo
