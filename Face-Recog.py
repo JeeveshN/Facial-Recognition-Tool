@@ -47,7 +47,10 @@ def get_images(path):
 
 #def add_to_dataset(image):
 def initialize_recognizer():
-    face_recognizer = cv2.face.createLBPHFaceRecognizer()
+    try:
+        face_recognizer = cv2.face.createLBPHFaceRecognizer()
+    except:
+        face_recognizer = cv2.createLBPHFaceRecognizer()
     print "Training.........."
     Dataset = get_images("./Dataset")
     print "Recognizer trained using Dataset: "+str(Dataset[2])+" Images used"
