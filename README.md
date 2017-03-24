@@ -1,7 +1,7 @@
 # Face-Recog-Tool
 This is a command line tool for facial recognition.It uses image processing library OpenCV.
 
-###Installation
+### Installation
 ```
 git clone https://github.com/JeeveshN/Face-Recog-Tool.git
 sudo apt-get install python-opencv
