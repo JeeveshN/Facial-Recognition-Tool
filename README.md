@@ -10,7 +10,7 @@ pip install numpy
 ## Getting Started
 **Training Set** has to be made before the actual training begins.Multiple pictures of the subjects shot from different angles with preferably different facial expressions would yield the best results.   
 Their are 2 ways to achieve this:  
-###Fast Mode
+### Fast Mode
 Multiple pictures of a single subject are kept in the folder named **Training** (Only single face must be present in each) and 
 ```
 python Train_Faces.py "Name of the Subject"
