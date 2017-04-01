@@ -65,7 +65,7 @@ def save_wrong_faces(num,temp_set,faces):
             inp = raw_input()
             inp = inp.split(":")
             faces[int(inp[0])][0]=-1
-            if(inp[1] != "Nil"):
+            if(inp[1].lower() != "nil"):
                 cv2.imwrite(inp[1]+ str(random.uniform(0,100000))+ ".jpg",temp_set[int(inp[0])])
     for i in xrange(len(faces)):
         if faces[i][0]!=-1 and faces[i][1]>18:
