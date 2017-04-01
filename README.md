@@ -22,6 +22,7 @@ Their is a number below each of the detected faces so the user can tell the prog
 ```
 Number below face:Correct Name
 ```
+**NOTE**-IF no wrong predictions are made make sure you enter 'Nil' in the prompt for wrong predictions.
 ### Learning from wrong Prediction
 ![](/extras/Selection_017.png?raw=True)   ![](/extras/Selection_019.png?raw=True)  
 ![](/extras/Selection_018.png?raw=True) 
