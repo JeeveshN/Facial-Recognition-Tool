@@ -24,6 +24,8 @@ else:
 def Make_Changes(label):
     if label not in Data_list:
         Data_list.append(label)
+	print Data_list
+
 
 def get_images(path):
     images = list()
@@ -43,6 +45,8 @@ def get_images(path):
         image_grey=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
         images.append(image_grey)
         labels.append(Data_list.index(labl))
+    Datafile["Data"]=Data_list
+    Datafile.close()
     return images,labels,count
 
 #def add_to_dataset(image):
@@ -103,9 +107,29 @@ def recognize(image_path,face_recognizer):
     num_wrong = input()
     save_wrong_faces(num_wrong,temp_set,face_list)
 
+def recognize_video(face_recognizer):
+	cap = cv2.VideoCapture(0)
+	while True:
+		if cap.grab():
+			ref,image = cap.retrieve()
+			image_grey=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+			faces = FACE_CASCADE.detectMultiScale(image_grey,scaleFactor=1.16,minNeighbors=5,minSize=(25,25),flags=0)
+			for x,y,w,h in faces:
+        			sub_img=image_grey[y:y+h,x:x+w]
+        			img=image[y:y+h,x:x+w]
+        			nbr,conf = face_recognizer.predict(sub_img)
+        			cv2.rectangle(image,(x-5,y-5),(x+w+5,y+h+5),(255, 255,0),2)
+        			cv2.putText(image,Data_list[nbr],(x,y-10), FONT, 0.5,(255,255,0),1)			
+        		cv2.imshow("Faces Found",image)
+		if (cv2.waitKey(1) & 0xFF == ord('q')) or (cv2.waitKey(1) & 0xFF == ord('Q')):
+			break
+
+	cap.release()
+	cv2.destroyAllWindows()
+
 def main():
     face_r = initialize_recognizer()
-    recognize(IMAGE_PATH,face_r)
+    recognize_video(face_r)
 
 
 
