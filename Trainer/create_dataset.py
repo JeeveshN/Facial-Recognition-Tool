@@ -37,7 +37,7 @@ def main():
     if os.path.exists(name):
         print "name already exists"
         name = name+str(random.randint(0, 10000))
-        print "So, this name's dataset has been saved as" + name
+        print "So, the dataset has been saved as" + name
     
     os.makedirs(name)
     os.chdir(name)

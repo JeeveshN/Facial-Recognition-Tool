@@ -25,8 +25,8 @@ def detect(image_path,name):
 
 
 def main():
-    if len(sys.argv) not in [2, 3]:
-        print "Usage: python Train_Faces.py <Name of person> [<directory_name>]"
+    if len(sys.argv) != 2:
+        print "Usage: python Train_Faces.py <Name of person>"
         sys.exit()
 
     name = sys.argv[1]
@@ -34,10 +34,9 @@ def main():
     global directory_path
     directory_path = "./" 
 
-    if len(sys.argv) == 3:
-        global dir_path
-        dir_path = True
-        directory_path = directory_path+sys.argv[2]+"/"
+    global dir_path
+    dir_path = True
+    directory_path = directory_path+sys.argv[1]+"/"
 
     os.chdir(directory_path)
 
