@@ -120,7 +120,7 @@ def recognize_video(face_recognizer):
 		if (cv2.waitKey(1) & 0xFF == ord('q')) or (cv2.waitKey(1) & 0xFF == ord('Q')):
 			break
 	Datafile["Data"]=Data_list
-    Datafile.close()
+    	Datafile.close()
 	cap.release()
 	cv2.destroyAllWindows()
 
