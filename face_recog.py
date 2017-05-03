@@ -4,11 +4,7 @@ import os
 import re
 import numpy as np
 import shelve,random
-if len(sys.argv) < 2:
-    print "Usage: python Detect_face.py 'image path'"
-    sys.exit()
 
-IMAGE_PATH = sys.argv[1]
 FONT = cv2.FONT_HERSHEY_SIMPLEX
 CASCADE = "face_cascade.xml"
 FACE_CASCADE = cv2.CascadeClassifier(CASCADE)
@@ -45,8 +41,6 @@ def get_images(path):
         image_grey=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
         images.append(image_grey)
         labels.append(Data_list.index(labl))
-    Datafile["Data"]=Data_list
-    Datafile.close()
     return images,labels,count
 
 
@@ -125,7 +119,8 @@ def recognize_video(face_recognizer):
         		cv2.imshow("Faces Found",image)
 		if (cv2.waitKey(1) & 0xFF == ord('q')) or (cv2.waitKey(1) & 0xFF == ord('Q')):
 			break
-
+	Datafile["Data"]=Data_list
+    Datafile.close()
 	cap.release()
 	cv2.destroyAllWindows()
 
