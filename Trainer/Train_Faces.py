@@ -16,10 +16,12 @@ def detect(image_path,name):
     for x,y,w,h in faces:
         sub_img=image[y:y+h,x:x+w]
         if(dir_path):
-            rel_path = "../../Dataset/"
+             os.chdir("../../Dataset/")
         else:
-            rel_path = "../Dataset/"
-        cv2.imwrite(rel_path + name+ str(random.uniform(0,100000))+ ".jpg",sub_img)
+             os.chdir("../Dataset/")
+        cv2.imwrite(name+ str(random.uniform(0,100000))+ ".jpg",sub_img)
+        os.chdir("../Trainer")
+        os.chdir(directory_path)
 
 
 def main():
@@ -29,9 +31,11 @@ def main():
 
     name = sys.argv[1]
 
+    global directory_path
     directory_path = "./" 
 
     if len(sys.argv) == 3:
+        global dir_path
         dir_path = True
         directory_path = directory_path+sys.argv[2]+"/"
 
