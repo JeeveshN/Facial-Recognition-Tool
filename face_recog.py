@@ -10,7 +10,7 @@ if len(sys.argv) < 2:
 
 IMAGE_PATH = sys.argv[1]
 FONT = cv2.FONT_HERSHEY_SIMPLEX
-CASCADE = "Face_cascade.xml"
+CASCADE = "face_cascade.xml"
 FACE_CASCADE = cv2.CascadeClassifier(CASCADE)
 
 Datafile = shelve.open("Data")
@@ -49,6 +49,7 @@ def get_images(path):
     Datafile.close()
     return images,labels,count
 
+
 #def add_to_dataset(image):
 def initialize_recognizer():
     try:
@@ -60,6 +61,7 @@ def initialize_recognizer():
     print "Recognizer trained using Dataset: "+str(Dataset[2])+" Images used"
     face_recognizer.train(Dataset[0],np.array(Dataset[1]))
     return face_recognizer
+
 
 def save_wrong_faces(num,temp_set,faces):
     os.chdir("./Dataset")
@@ -75,7 +77,6 @@ def save_wrong_faces(num,temp_set,faces):
         if faces[i][0]!=-1 and faces[i][1]>18:
             cv2.imwrite(Data_list[faces[i][0]]+str(random.uniform(0,100000))+ ".jpg",temp_set[i])
     os.chdir("../")
-
 
 
 def recognize(image_path,face_recognizer):
@@ -107,6 +108,7 @@ def recognize(image_path,face_recognizer):
     num_wrong = input()
     save_wrong_faces(num_wrong,temp_set,face_list)
 
+
 def recognize_video(face_recognizer):
 	cap = cv2.VideoCapture(0)
 	while True:
@@ -127,11 +129,18 @@ def recognize_video(face_recognizer):
 	cap.release()
 	cv2.destroyAllWindows()
 
+
 def main():
+    if len(sys.argv) not in [1, 2]:
+        print "Usage: python face_recog.py [<complete image_path>]"
+        sys.exit()
+
     face_r = initialize_recognizer()
-    recognize_video(face_r)
 
-
+    if len(sys.argv) == 1:
+        recognize_video(face_r)
+    else:
+        recognize(sys.argv[1], face_r)
 
 
 if __name__ == "__main__":

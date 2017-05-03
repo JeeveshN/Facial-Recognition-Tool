@@ -3,7 +3,7 @@ import sys
 import os
 import random
 
-cascade = "../Face_cascade.xml"
+cascade = "../face_cascade.xml"
 face_cascade=cv2.CascadeClassifier(cascade)
 dir_path = False
 
