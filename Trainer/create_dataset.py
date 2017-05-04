@@ -28,7 +28,7 @@ def start(directory_name):
 
 def main():
     if len(sys.argv) != 2:
-        print "Usage: create_dataset.py <Name of the person>"
+        print "Usage: python create_dataset.py <Name of the person>"
         sys.exit()
 
     name = sys.argv[1]
