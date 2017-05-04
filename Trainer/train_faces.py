@@ -25,7 +25,7 @@ def detect(image_path,name):
 
 def main():
     if len(sys.argv) != 2:
-        print "Usage: python Train_Faces.py <Name of person>"
+        print "Usage: python train_faces.py <Name of person>"
         sys.exit()
 
     name = sys.argv[1]
