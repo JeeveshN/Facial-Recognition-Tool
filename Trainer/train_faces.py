@@ -14,10 +14,7 @@ def detect(image_path,name):
     faces = face_cascade.detectMultiScale(image_grey,scaleFactor=1.16,minNeighbors=5,minSize=(25,25),flags=0)
     for x,y,w,h in faces:
         sub_img=image[y:y+h,x:x+w]
-        if(dir_path):
-             os.chdir("../../Dataset/")
-        else:
-             os.chdir("../Dataset/")
+        os.chdir("../../Dataset/")
         cv2.imwrite(name+ str(random.uniform(0,100000))+ ".jpg",sub_img)
         os.chdir("../Trainer")
         os.chdir(directory_path)
@@ -33,8 +30,6 @@ def main():
     global directory_path
     directory_path = "./" 
 
-    global dir_path
-    dir_path = True
     directory_path = directory_path+sys.argv[1]+"/"
 
     if not os.path.exists(directory_path):
