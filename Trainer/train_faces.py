@@ -10,7 +10,7 @@ dir_path = False
 def detect(image_path,name):
     image = cv2.imread(os.path.abspath(image_path))
     # cv2.imshow("Faces Found",image)
-    imagte_grey = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    image_grey = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(image_grey,scaleFactor=1.16,minNeighbors=5,minSize=(25,25),flags=0)
     for x,y,w,h in faces:
         sub_img=image[y:y+h,x:x+w]
